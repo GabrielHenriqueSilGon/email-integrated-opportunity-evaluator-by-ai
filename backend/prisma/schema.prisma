@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Opportunity {
+  id            String   @id @default(uuid())
+  fullName      String
+  email         String
+  phone         String
+  documentPath  String
+  analysis      String?
+  score         Int?
+  verdict       String?
+  status        String   @default("PENDING")
+  createdAt     DateTime @default(now())
+}
+
